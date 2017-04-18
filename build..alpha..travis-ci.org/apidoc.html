@@ -1,0 +1,526 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="http://euforic.github.com/banking.js"
+
+    >banking (v1.0.1)</a>
+</h1>
+<h4>The missing Bank API for getting you statement data</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.banking">module banking</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.banking.banking">
+            function <span class="apidocSignatureSpan"></span>banking
+            <span class="apidocSignatureSpan">(args)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.banking.parse">
+            function <span class="apidocSignatureSpan">banking.</span>parse
+            <span class="apidocSignatureSpan">(str, fn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.banking.parseFile">
+            function <span class="apidocSignatureSpan">banking.</span>parseFile
+            <span class="apidocSignatureSpan">(file, fn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.banking.toString">
+            function <span class="apidocSignatureSpan">banking.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">banking.</span>ofx</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">banking.</span>utils</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">banking.</span>version</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.banking.ofx">module banking.ofx</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.banking.ofx.createRequest">
+            function <span class="apidocSignatureSpan">banking.ofx.</span>createRequest
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.banking.ofx.parse">
+            function <span class="apidocSignatureSpan">banking.ofx.</span>parse
+            <span class="apidocSignatureSpan">(ofxStr, fn)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.banking.utils">module banking.utils</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.banking.utils.mixin">
+            function <span class="apidocSignatureSpan">banking.utils.</span>mixin
+            <span class="apidocSignatureSpan">(base, obj)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.banking.utils.uuid">
+            function <span class="apidocSignatureSpan">banking.utils.</span>uuid
+            <span class="apidocSignatureSpan">(len, radix)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.banking" id="apidoc.module.banking">module banking</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.banking.banking" id="apidoc.element.banking.banking">
+        function <span class="apidocSignatureSpan"></span>banking
+        <span class="apidocSignatureSpan">(args)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Banking(args){
+  if (!(this instanceof Banking)) return new Banking(args);
+  this.opts = {
+    fid: args.fid,
+    fidOrg: args.fidOrg || &#x27;&#x27;,
+    url: args.url,
+    bankId: args.bankId || &#x27;&#x27;,<span class="apidocCodeCommentSpan"> /* If bank account use your bank routing number otherwise set to null */
+</span>    user: args.user,
+    password: args.password,
+    accId: args.accId,  /* Account Number */
+    brokerId: args.brokerId, /* For investment accounts */
+    accType: args.accType,
+    appVer: args.appVer || &#x27;1700&#x27;,
+    ofxVer: args.ofxVer || &#x27;102&#x27;,
+    app: args.app || &#x27;QWIN&#x27;
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.banking.parse" id="apidoc.element.banking.parse">
+        function <span class="apidocSignatureSpan">banking.</span>parse
+        <span class="apidocSignatureSpan">(str, fn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parse = function (str, fn){
+  ofx.parse(str, function (res){
+    fn(res);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```javascript
+Banking.parseFile(&#x27;/myfile.ofx&#x27;, function (res) {
+  console.log(res);
+});
+```
+
+### Banking.<span class="apidocCodeKeywordSpan">parse</span>(Str, fn)
+Parse an OFX string into JSON
+
+```javascript
+Banking.parse(&#x27;SomeSuperLongOfxString&#x27;, function (res) {
+  console.log(res);
+});
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.banking.parseFile" id="apidoc.element.banking.parseFile">
+        function <span class="apidocSignatureSpan">banking.</span>parseFile
+        <span class="apidocSignatureSpan">(file, fn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parseFile = function (file, fn) {
+  fs.readFile(file, &#x27;utf8&#x27;, function (err, data) {
+    if (err) throw new Error(err);
+    ofx.parse(data, function (res){
+      fn(res);
+    });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// date format YYYYMMDDHHMMSS
+bank.getStatement({start:20130101, end:20131101}, function(err, res){
+  if(err) console.log(err)
+  console.log(res);
+});
+```
+
+### Banking.<span class="apidocCodeKeywordSpan">parseFile</span>(Str, fn)
+Parse an OFX file into JSON
+
+```javascript
+Banking.parseFile(&#x27;/myfile.ofx&#x27;, function (res) {
+  console.log(res);
+});
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.banking.toString" id="apidoc.element.banking.toString">
+        function <span class="apidocSignatureSpan">banking.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.banking.ofx" id="apidoc.module.banking.ofx">module banking.ofx</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.banking.ofx.createRequest" id="apidoc.element.banking.ofx.createRequest">
+        function <span class="apidocSignatureSpan">banking.ofx.</span>createRequest
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">createRequest = function (opts) {
+  var type = (opts.accType || &#x27;&#x27;).toUpperCase();
+  //TODO join ofxReq and ofxReqCC not sure why I seperated in the first place
+  //Request for Bank statement
+  if (type === &#x27;INVESTMENT&#x27;) {
+    var reqStr = getOfxHeaders(opts) +
+      &#x27;&#x3c;OFX&#x3e;&#x27; +
+      getSignOnMsg(opts) +
+      &#x27;&#x3c;INVSTMTMSGSRQV1&#x3e;&#x27; +
+      &#x27;&#x3c;INVSTMTTRNRQ&#x3e;&#x27; +
+      &#x27;&#x3c;TRNUID&#x3e;&#x27; + util.uuid(32) +
+      &#x27;&#x3c;CLTCOOKIE&#x3e;&#x27; + util.uuid(5) +
+      &#x27;&#x3c;INVSTMTRQ&#x3e;&#x27; +
+      &#x27;&#x3c;INVACCTFROM&#x3e;&#x27; +
+      &#x27;&#x3c;BROKERID&#x3e;&#x27; + opts.brokerId +
+      &#x27;&#x3c;ACCTID&#x3e;&#x27; + opts.accId +
+      &#x27;&#x3c;/INVACCTFROM&#x3e;&#x27; +
+      &#x27;&#x3c;INCTRAN&#x3e;&#x27; +
+      &#x27;&#x3c;DTSTART&#x3e;&#x27; + opts.start +
+      (typeof opts.end !== &#x27;undefined&#x27; ? &#x27;&#x3c;DTEND&#x3e;&#x27; + opts.end : &#x27;&#x27;) +
+      &#x27;&#x3c;INCLUDE&#x3e;Y&#x3c;/INCTRAN&#x3e;&#x27; +
+      &#x27;&#x3c;INCOO&#x3e;Y&#x27; +
+      &#x27;&#x3c;INCPOS&#x3e;&#x27; +
+      &#x27;&#x3c;INCLUDE&#x3e;Y&#x27; +
+      &#x27;&#x3c;/INCPOS&#x3e;&#x27; +
+      &#x27;&#x3c;INCBAL&#x3e;Y&#x27; +
+      &#x27;&#x3c;/INVSTMTRQ&#x3e;&#x27; +
+      &#x27;&#x3c;/INVSTMTTRNRQ&#x3e;&#x27; +
+      &#x27;&#x3c;/INVSTMTMSGSRQV1&#x3e;&#x27; +
+      &#x27;&#x3c;/OFX&#x3e;&#x27;;
+  } else
+  if (type != &#x27;CREDITCARD&#x27;) {
+    var reqStr = getOfxHeaders(opts) +
+      &#x27;&#x3c;OFX&#x3e;&#x27; +
+      getSignOnMsg(opts) +
+      &#x27;&#x3c;BANKMSGSRQV1&#x3e;&#x27; +
+      &#x27;&#x3c;STMTTRNRQ&#x3e;&#x27; +
+      &#x27;&#x3c;TRNUID&#x3e;&#x27; + util.uuid(32) +
+      &#x27;&#x3c;CLTCOOKIE&#x3e;&#x27; + util.uuid(5) +
+      &#x27;&#x3c;STMTRQ&#x3e;&#x27; +
+      &#x27;&#x3c;BANKACCTFROM&#x3e;&#x27; +
+      &#x27;&#x3c;BANKID&#x3e;&#x27; + opts.bankId +
+      &#x27;&#x3c;ACCTID&#x3e;&#x27; + opts.accId +
+      &#x27;&#x3c;ACCTTYPE&#x3e;&#x27; + type +
+      &#x27;&#x3c;/BANKACCTFROM&#x3e;&#x27; +
+      &#x27;&#x3c;INCTRAN&#x3e;&#x27; +
+      &#x27;&#x3c;DTSTART&#x3e;&#x27; + opts.start +
+      (typeof opts.end !== &#x27;undefined&#x27; ? &#x27;&#x3c;DTEND&#x3e;&#x27; + opts.end : &#x27;&#x27;) +
+      &#x27;&#x3c;INCLUDE&#x3e;Y&#x3c;/INCTRAN&#x3e;&#x27; +
+      &#x27;&#x3c;/STMTRQ&#x3e;&#x27; +
+      &#x27;&#x3c;/STMTTRNRQ&#x3e;&#x27; +
+      &#x27;&#x3c;/BANKMSGSRQV1&#x3e;&#x27; +
+      &#x27;&#x3c;/OFX&#x3e;&#x27;;
+  } else {
+    //Request for CreditCard Statement
+    var reqStr = getOfxHeaders(opts) +
+      &#x27;&#x3c;OFX&#x3e;&#x27; +
+      getSignOnMsg(opts) +
+      &#x27;&#x3c;CREDITCARDMSGSRQV1&#x3e;&#x27; +
+      &#x27;&#x3c;CCSTMTTRNRQ&#x3e;&#x27; +
+      &#x27;&#x3c;TRNUID&#x3e;&#x27; + util.uuid(32) +
+      &#x27;&#x3c;CLTCOOKIE&#x3e;&#x27; + util.uuid(5) +
+      &#x27;&#x3c;CCSTMTRQ&#x3e;&#x27; +
+      &#x27;&#x3c;CCACCTFROM&#x3e;&#x27; +
+      &#x27;&#x3c;ACCTID&#x3e;&#x27; + opts.accId +
+      &#x27;&#x3c;/CCACCTFROM&#x3e;&#x27; +
+      &#x27;&#x3c;INCTRAN&#x3e;&#x27; +
+      &#x27;&#x3c;DTSTART&#x3e;&#x27; + opts.start +
+      (typeof opts.end !== &#x27;undefined&#x27; ? &#x27;&#x3c;DTEND&#x3e;&#x27; + opts.end : &#x27;&#x27;) +
+      &#x27;&#x3c;INCLUDE&#x3e;Y&#x3c;/INCTRAN&#x3e;&#x27; +
+      &#x27;&#x3c;/CCSTMTRQ&#x3e;&#x27; +
+      &#x27;&#x3c;/CCSTMTTRNRQ&#x3e;&#x27; +
+      &#x27;&#x3c;/CREDITCARDMSGSRQV1&#x3e;&#x27; +
+      &#x27;&#x3c;/OFX&#x3e;&#x27;;
+  }
+  debug(&#x27;OFX-RequestString:&#x27;, reqStr);
+  return reqStr;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.banking.ofx.parse" id="apidoc.element.banking.ofx.parse">
+        function <span class="apidocSignatureSpan">banking.ofx.</span>parse
+        <span class="apidocSignatureSpan">(ofxStr, fn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parse = function (ofxStr, fn) {
+  var data = {};
+  var callback = fn;
+  var ofxRes = ofxStr.split(&#x27;&#x3c;OFX&#x3e;&#x27;,2);
+  var ofx = &#x27;&#x3c;OFX&#x3e;&#x27; + ofxRes[1];
+  var headerString = ofxRes[0].split(/\r|\n/);
+
+  data.xml = ofx
+              // Remove empty spaces and line breaks between tags
+              .replace(/&#x3e;\s+&#x3c;/g, &#x27;&#x3e;&#x3c;&#x27;)
+              // Remove empty spaces and line breaks before tags content
+              .replace(/\s+&#x3c;/g, &#x27;&#x3c;&#x27;)
+              // Remove empty spaces and line breaks after tags content
+              .replace(/&#x3e;\s+/g, &#x27;&#x3e;&#x27;)
+              // Remove dots in start-tags names and remove end-tags with dots
+              .replace(/&#x3c;([A-Z0-9_]*)+\.+([A-Z0-9_]*)&#x3e;([^&#x3c;]+)(&#x3c;\/\1\.\2&#x3e;)?/g, &#x27;&#x3c;\$1\$2&#x3e;\$3&#x27; )
+              // Add a new end-tags for the ofx elements
+              .replace(/&#x3c;(\w+?)&#x3e;([^&#x3c;]+)/g, &#x27;&#x3c;\$1&#x3e;\$2&#x3c;/&#x3c;added&#x3e;\$1&#x3e;&#x27;)
+              // Remove duplicate end-tags
+              .replace(/&#x3c;\/&#x3c;added&#x3e;(\w+?)&#x3e;(&#x3c;\/\1&#x3e;)?/g, &#x27;&#x3c;/\$1&#x3e;&#x27;);
+
+    parser.parseString(data.xml, function (err, result) {
+      data.body = result;
+    });
+
+  data.header = {};
+
+  for(var key in headerString){
+    if (typeof headerString[key] === &#x22;string&#x22;){
+      var headAttributes = headerString[key].split(/:/,2);
+    }
+    if (headAttributes[0]) data.header[headAttributes[0]] = headAttributes[1];
+  }
+  fn(data);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```javascript
+Banking.parseFile(&#x27;/myfile.ofx&#x27;, function (res) {
+  console.log(res);
+});
+```
+
+### Banking.<span class="apidocCodeKeywordSpan">parse</span>(Str, fn)
+Parse an OFX string into JSON
+
+```javascript
+Banking.parse(&#x27;SomeSuperLongOfxString&#x27;, function (res) {
+  console.log(res);
+});
+```
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.banking.utils" id="apidoc.module.banking.utils">module banking.utils</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.banking.utils.mixin" id="apidoc.element.banking.utils.mixin">
+        function <span class="apidocSignatureSpan">banking.utils.</span>mixin
+        <span class="apidocSignatureSpan">(base, obj)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">mixin = function (base, obj) {
+  for (var key in base) {
+    obj[key] = (obj[key]) ? obj[key] : base[key];
+  }
+  return obj;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.banking.utils.uuid" id="apidoc.element.banking.utils.uuid">
+        function <span class="apidocSignatureSpan">banking.utils.</span>uuid
+        <span class="apidocSignatureSpan">(len, radix)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">uuid = function (len, radix) {
+    var CHARS = &#x27;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz&#x27;.split(&#x27;&#x27;);
+    var chars = CHARS, uuid = [];
+    radix = radix || chars.length;
+
+    if (len) {
+      for (var i = 0; i &#x3c; len; i++) uuid[i] = chars[0 | Math.random()*radix];
+    } else {
+      var r;
+      uuid[8] = uuid[13] = uuid[18] = uuid[23] = &#x27;-&#x27;;
+      uuid[14] = &#x27;4&#x27;;
+
+      for (var i = 0; i &#x3c; 36; i++) {
+        if (!uuid[i]) {
+          r = 0 | Math.random()*16;
+          uuid[i] = chars[(i == 19) ? (r &#x26; 0x3) | 0x8 : r];
+        }
+      }
+    }
+
+    return uuid.join(&#x27;&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        &#x27;DATA:OFXSGML\r\n&#x27; +
+        &#x27;VERSION:&#x27;+opts.ofxVer+&#x27;\r\n&#x27; +
+        &#x27;SECURITY:NONE\r\n&#x27; +
+        &#x27;ENCODING:USASCII\r\n&#x27; +
+        &#x27;CHARSET:1252\r\n&#x27; +
+        &#x27;COMPRESSION:NONE\r\n&#x27; +
+        &#x27;OLDFILEUID:NONE\r\n&#x27; +
+        &#x27;NEWFILEUID:&#x27; + util.<span class="apidocCodeKeywordSpan">uuid</span>(32) + &#x27;\r\n&#x27; +
+        &#x27;\r\n&#x27;;
+}
+
+
+/**
+* [createRequest description]
+* @param  {[type]} opts [description]
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
