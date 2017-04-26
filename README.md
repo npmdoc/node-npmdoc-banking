@@ -1,6 +1,6 @@
 # npmdoc-banking
 
-#### api documentation for  [banking (v1.0.1)](http://euforic.github.com/banking.js)  [![npm package](https://img.shields.io/npm/v/npmdoc-banking.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-banking) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-banking.svg)](https://travis-ci.org/npmdoc/node-npmdoc-banking)
+#### basic api documentation for  [banking (v1.0.1)](http://euforic.github.com/banking.js)  [![npm package](https://img.shields.io/npm/v/npmdoc-banking.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-banking) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-banking.svg)](https://travis-ci.org/npmdoc/node-npmdoc-banking)
 
 #### The missing Bank API for getting you statement data
 
@@ -68,7 +68,8 @@
         "prepublish": "npm prune",
         "test": "make test"
     },
-    "version": "1.0.1"
+    "version": "1.0.1",
+    "bin": {}
 }
 ```
 
