@@ -72,6 +72,15 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.banking.index">
+            function <span class="apidocSignatureSpan">banking.</span>index
+            <span class="apidocSignatureSpan">(args)</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <a class="apidocElementLiA" href="#apidoc.element.banking.parse">
             function <span class="apidocSignatureSpan">banking.</span>parse
             <span class="apidocSignatureSpan">(str, fn)</span>
@@ -90,10 +99,7 @@
 
         <li>
 
-            <a class="apidocElementLiA" href="#apidoc.element.banking.toString">
-            function <span class="apidocSignatureSpan">banking.</span>toString
-            <span class="apidocSignatureSpan">()</span>
-            </a>
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">banking.</span>index.prototype</span>
 
         </li>
 
@@ -112,6 +118,56 @@
         <li>
 
             <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">banking.</span>version</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.banking.index">module banking.index</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.banking.index.index">
+            function <span class="apidocSignatureSpan">banking.</span>index
+            <span class="apidocSignatureSpan">(args)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.banking.index.parse">
+            function <span class="apidocSignatureSpan">banking.index.</span>parse
+            <span class="apidocSignatureSpan">(str, fn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.banking.index.parseFile">
+            function <span class="apidocSignatureSpan">banking.index.</span>parseFile
+            <span class="apidocSignatureSpan">(file, fn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">banking.index.</span>version</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.banking.index.prototype">module banking.index.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.banking.index.prototype.getStatement">
+            function <span class="apidocSignatureSpan">banking.index.prototype.</span>getStatement
+            <span class="apidocSignatureSpan">(args, fn)</span>
+            </a>
 
         </li>
 
@@ -170,6 +226,35 @@
     <h2>
         <a href="#apidoc.element.banking.banking" id="apidoc.element.banking.banking">
         function <span class="apidocSignatureSpan"></span>banking
+        <span class="apidocSignatureSpan">(args)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Banking(args){
+  if (!(this instanceof Banking)) return new Banking(args);
+  this.opts = {
+    fid: args.fid,
+    fidOrg: args.fidOrg || &#x27;&#x27;,
+    url: args.url,
+    bankId: args.bankId || &#x27;&#x27;,<span class="apidocCodeCommentSpan"> /* If bank account use your bank routing number otherwise set to null */
+</span>    user: args.user,
+    password: args.password,
+    accId: args.accId,  /* Account Number */
+    brokerId: args.brokerId, /* For investment accounts */
+    accType: args.accType,
+    appVer: args.appVer || &#x27;1700&#x27;,
+    ofxVer: args.ofxVer || &#x27;102&#x27;,
+    app: args.app || &#x27;QWIN&#x27;
+  };
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.banking.index" id="apidoc.element.banking.index">
+        function <span class="apidocSignatureSpan">banking.</span>index
         <span class="apidocSignatureSpan">(args)</span>
         </a>
     </h2>
@@ -265,24 +350,172 @@ Banking.parseFile(&#x27;/myfile.ofx&#x27;, function (res) {
 
 
 
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.banking.index" id="apidoc.module.banking.index">module banking.index</a></h1>
+
+
     <h2>
-        <a href="#apidoc.element.banking.toString" id="apidoc.element.banking.toString">
-        function <span class="apidocSignatureSpan">banking.</span>toString
-        <span class="apidocSignatureSpan">()</span>
+        <a href="#apidoc.element.banking.index.index" id="apidoc.element.banking.index.index">
+        function <span class="apidocSignatureSpan">banking.</span>index
+        <span class="apidocSignatureSpan">(args)</span>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">toString = function () {
-    return text;
+    <li>description and source-code<pre class="apidocCodePre">function Banking(args){
+  if (!(this instanceof Banking)) return new Banking(args);
+  this.opts = {
+    fid: args.fid,
+    fidOrg: args.fidOrg || &#x27;&#x27;,
+    url: args.url,
+    bankId: args.bankId || &#x27;&#x27;,<span class="apidocCodeCommentSpan"> /* If bank account use your bank routing number otherwise set to null */
+</span>    user: args.user,
+    password: args.password,
+    accId: args.accId,  /* Account Number */
+    brokerId: args.brokerId, /* For investment accounts */
+    accType: args.accType,
+    appVer: args.appVer || &#x27;1700&#x27;,
+    ofxVer: args.ofxVer || &#x27;102&#x27;,
+    app: args.app || &#x27;QWIN&#x27;
+  };
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
 
 
+    <h2>
+        <a href="#apidoc.element.banking.index.parse" id="apidoc.element.banking.index.parse">
+        function <span class="apidocSignatureSpan">banking.index.</span>parse
+        <span class="apidocSignatureSpan">(str, fn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parse = function (str, fn){
+  ofx.parse(str, function (res){
+    fn(res);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+```javascript
+Banking.parseFile(&#x27;/myfile.ofx&#x27;, function (res) {
+  console.log(res);
+});
+```
+
+### Banking.<span class="apidocCodeKeywordSpan">parse</span>(Str, fn)
+Parse an OFX string into JSON
+
+```javascript
+Banking.parse(&#x27;SomeSuperLongOfxString&#x27;, function (res) {
+  console.log(res);
+});
+```
+...</pre></li>
+    </ul>
 
 
 
+    <h2>
+        <a href="#apidoc.element.banking.index.parseFile" id="apidoc.element.banking.index.parseFile">
+        function <span class="apidocSignatureSpan">banking.index.</span>parseFile
+        <span class="apidocSignatureSpan">(file, fn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parseFile = function (file, fn) {
+  fs.readFile(file, &#x27;utf8&#x27;, function (err, data) {
+    if (err) throw new Error(err);
+    ofx.parse(data, function (res){
+      fn(res);
+    });
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// date format YYYYMMDDHHMMSS
+bank.getStatement({start:20130101, end:20131101}, function(err, res){
+  if(err) console.log(err)
+  console.log(res);
+});
+```
+
+### Banking.<span class="apidocCodeKeywordSpan">parseFile</span>(Str, fn)
+Parse an OFX file into JSON
+
+```javascript
+Banking.parseFile(&#x27;/myfile.ofx&#x27;, function (res) {
+  console.log(res);
+});
+```
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.banking.index.prototype" id="apidoc.module.banking.index.prototype">module banking.index.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.banking.index.prototype.getStatement" id="apidoc.element.banking.index.prototype.getStatement">
+        function <span class="apidocSignatureSpan">banking.index.prototype.</span>getStatement
+        <span class="apidocSignatureSpan">(args, fn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getStatement = function (args, fn) {
+  var opts = util.mixin(this.opts, args);
+  var ofxReq = ofx.createRequest(opts);
+
+  var req = request
+    .post(this.opts.url)
+    .type(&#x27;application/x-ofx&#x27;)
+    .set({&#x27;User-Agent&#x27; : &#x27;banking-js&#x27;})
+    .set({&#x27;Accept&#x27; : &#x27;application/ofx&#x27;})
+    .send(ofxReq)
+    .buffer()
+
+  if (!fn) return req;
+
+  req
+    .end(function (err, res){
+      debug(&#x27;Raw-Response:&#x27;, res.text);
+      if (!res.ok || res.error) return fn(true, res.text);
+      ofx.parse(res.text, function(ofxObj){
+        fn(false, ofxObj);
+      });
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+, accType: &#x27;CHECKING&#x27; /* CHECKING || SAVINGS || MONEYMRKT || CREDITCARD */
+, ofxVer: 103 /* default 102 */
+, app: &#x27;QBKS&#x27; /* default  &#x27;QWIN&#x27; */
+, appVer: &#x27;1900&#x27; /* default 1700 */
+});
+```
+
+### bank.<span class="apidocCodeKeywordSpan">getStatement</span>(Obj, fn)
+Fetch and parse transactions for the selected date rang
+
+```js
+// date format YYYYMMDDHHMMSS
+bank.getStatement({start:20130101, end:20131101}, function(err, res){
+if(err) console.log(err)
+console.log(res);
+...</pre></li>
+    </ul>
 
 
 </div>
@@ -376,7 +609,23 @@ Banking.parseFile(&#x27;/myfile.ofx&#x27;, function (res) {
   debug(&#x27;OFX-RequestString:&#x27;, reqStr);
   return reqStr;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * @param {Function} cb
+ * @return {XML|JSON}
+ * @api public
+ */
+
+Banking.prototype.getStatement = function(args, fn) {
+var opts = util.mixin(this.opts, args);
+var ofxReq = ofx.<span class="apidocCodeKeywordSpan">createRequest</span>(opts);
+
+var req = request
+  .post(this.opts.url)
+  .type(&#x27;application/x-ofx&#x27;)
+  .set({&#x27;User-Agent&#x27; : &#x27;banking-js&#x27;})
+  .set({&#x27;Accept&#x27; : &#x27;application/ofx&#x27;})
+  .send(ofxReq)
+...</pre></li>
     </ul>
 
 
@@ -462,7 +711,23 @@ Banking.parse(&#x27;SomeSuperLongOfxString&#x27;, function (res) {
   }
   return obj;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * @param {String} format (Options are &#x27;xml&#x27; || &#x27;json&#x27; if omitted defaults to &#x27;json&#x27;)
+ * @param {Function} cb
+ * @return {XML|JSON}
+ * @api public
+ */
+
+Banking.prototype.getStatement = function(args, fn) {
+var opts = util.<span class="apidocCodeKeywordSpan">mixin</span>(this.opts, args);
+var ofxReq = ofx.createRequest(opts);
+
+var req = request
+  .post(this.opts.url)
+  .type(&#x27;application/x-ofx&#x27;)
+  .set({&#x27;User-Agent&#x27; : &#x27;banking-js&#x27;})
+  .set({&#x27;Accept&#x27; : &#x27;application/ofx&#x27;})
+...</pre></li>
     </ul>
 
 
